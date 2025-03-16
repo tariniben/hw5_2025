@@ -1,0 +1,248 @@
+/* Default page formatting for mobile screen size. */
+
+/* Step #1
+Animates the logo with keyframes, starting at a width of 25px and 0 opacity & changing to 475px and 1 opacity across 5 seconds. */
+#logo {
+    animation: logoAnimation 5s forwards;
+}
+
+@keyframes logoAnimation {
+    0% {
+      width: 25px;
+      opacity: 0;
+    }
+    100% {
+      width: 475px;
+      opacity: 1;
+    }
+}
+
+/* Step #2
+Sets body text to Poppins font. Uses the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1. */
+body {
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Step #3
+Edits the header tag css to be centered and in a column format */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Step #4
+Edits the nav_links class css to be centered and in a column format. */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* Step #5
+Styles the links so that they have the same color even after they have been visited. */
+a:link, a:visited {
+    color: blue;
+}
+
+/* Step #6
+Styles the upper part of each card to have rounded edges, be blue color, have certain border values, and have padding. */
+.card > header {
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Styles the lower layer of each card to have rounded edges at the top and pointy corners at the bottom. */
+.pricing > .card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/* Step #7
+Edits the card class to have an initial “size” of 450px and be in a column format. */
+.card {
+    flex-basis: 450px;
+    flex-direction: column;
+}
+
+/* Step #8
+Edits the pricing class css for the pricing class to be centered both horizontally and vertically. */
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Step #9
+Styles the images in the gallery class to have a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px. */
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step #10
+Edits the gallery class css to wrap, be centered, and be in a row format. */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/* Changes the page formatting if the screen size is 900px and bigger. */
+@media screen and (min-width: 900px) {
+
+    /* Step #11
+    Edits the css for the header tag to be in a row format and have some space between elements. */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    /* Edits the nav_links class css to be in a row format and have no wrap. */
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    /* Step #12
+    Edits the card class css to an initial “size” of 275px and column format. */
+    .card {
+        flex-basis: 275px;
+        flex-direction: column;
+    }
+
+    /* Edits the pricing class css to have a centered, row format. */
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    /* Step #13
+    Modifies the first header so that it remains visible at the top of the screen even as we scroll down. */
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+}
+
+/* Step #14
+Makes logo unanimated if prefers-reduced-motion is selected in the accessibility preferences. */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none; 
+        width: 475px; 
+        opacity: 1; 
+    }
+}
+
+/* Changes the page formatting for when its printed. */
+@media print {
+    body {
+        /* Step #15
+        Changes the font on body to Arial with a backup value of Helvetica */
+        font-family: Arial, Helvetica, sans-serif;
+
+        /* Step #16
+        Removes background image. */
+        background-image: none;
+    }
+  
+    /* Step #17
+    Edits the first header so it is in a column format. */
+    body > header {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    /* Ensures the nav section takes up all the available space */
+    nav {
+        width: 100%;
+    }
+
+    /* Makes the nav_links in a row format with space between its elements. */
+    .nav_links {
+        display: flex;
+        justify-content: space-around; 
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    /* Step #18
+    Edits the pricing class so that the elements align along the bottom. */
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+
+    /* Step #19
+    Sets the card elements to have a solid border 2px of #45ADDD and initial size of 325px. */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+  
+    /* Step #20
+    Makes the gallery heading invisible. */
+    #gallery {
+        display: none;
+    }
+
+    /* Makes the gallery images invisible. */
+    .gallery {
+        display: none; 
+    }
+
+    /* Step #21
+    Adds a thumbs up after every exclamation mark in the card text */
+    .card ul li:nth-child(2)::after {
+        content: "👍"; 
+    }
+  }
+
+  /* Main accessibility features */
+
+  /* Hides "Skip to Main" link when not tabbed on and sets its look */
+  a.skip {
+    position: absolute;
+    top: -50px;
+    left: 5px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 1000;
+  }
+  
+  /* Makes "Skip to Main" link appear when user tabs */
+  a.skip:focus {
+    top: 5px;
+    outline: none;
+  }
+  
+  /* Creates yellow box around any tabbed on link */
+  *:focus {
+    outline: 2px solid #FFCB05;
+  }
